@@ -11,7 +11,7 @@ services:
   web:
     image: nbaishev/api_yamdb
     context: .
-    dockerfile: api_yamdb/Dockerfile
+    dockerfile: ./api_yamdb/Dockerfile
     restart: always
     volumes:
       - static_value:/app/static/
