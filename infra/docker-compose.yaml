@@ -9,7 +9,7 @@ services:
       - ./.env
 
   web:
-    build: .
+    build: ./api_yamdb
     image: nbaishev/api_yamdb
     restart: always
     volumes:
