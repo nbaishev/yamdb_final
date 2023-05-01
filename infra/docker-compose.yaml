@@ -9,9 +9,10 @@ services:
       - ./.env
 
   web:
-    image: nbaishev/api_yamdb:latest
+    build: .
       context: .
       dockerfile: ./api_yamdb/Dockerfile
+    image: nbaishev/api_yamdb:latest
     restart: always
     volumes:
       - static_value:/app/static/
