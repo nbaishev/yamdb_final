@@ -10,7 +10,6 @@ services:
 
   web:
     build: ../api_yamdb/
-    image: nbaishev/api_yamdb:latest
     restart: always
     volumes:
       - static_value:/app/static/
