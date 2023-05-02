@@ -44,7 +44,7 @@ jobs:
           context: ./api_yamdb/
           dockerfile: Dockerfile
           push: true
-          tags: nbaishev/api_yamdb:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
   
   deploy:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
         script: |
           sudo docker-compose stop
           sudo docker-compose rm web
-          sudo touch .env
+          touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
@@ -67,6 +67,7 @@ jobs:
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           sudo docker-compose up -d
+          sudo docker-compose exec -T web python manage.py collectstatic --no-input
  
   send_message:
     runs-on: ubuntu-latest
