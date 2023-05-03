@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default=None)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', default='False')
 
-HOSTS_FROM_ENV = [os.getenv('ALLOWED_HOSTS').split(' ')]
+HOSTS_FROM_ENV = [os.getenv('ALLOWED_HOSTS', default='127.0.0.1').split(' ')]
 ALLOWED_HOSTS = HOSTS_FROM_ENV
 
 # Application definition
