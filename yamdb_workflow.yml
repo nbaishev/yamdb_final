@@ -19,15 +19,17 @@ jobs:
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
         pip install -r api_yamdb/requirements.txt
 
-    - name: Test with flake8 and django tests
-      run: |
-        python -m flake8
-        python pytest
+    - name: Test with flake8
+      run: python -m flake8
+
+    - name: Test with pytest
+      run: python pytest
 
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: tests
+    if: github.refs == 'refs/heads/master'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
