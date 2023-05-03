@@ -43,6 +43,8 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
+          context: api_yamdb/
+          dockerfile: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
   
@@ -66,8 +68,6 @@ jobs:
           echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-          echo DEBUG=${{ secrets.DEBUG }} >> .env
           echo ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }} >> .env
           sudo docker-compose up -d
  
