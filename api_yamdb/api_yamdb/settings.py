@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', default='1234qwerty')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', default=False)
+DEBUG = os.getenv('DEBUG', default=True)
 
 HOSTS_FROM_ENV = [os.getenv('ALLOWED_HOSTS', default='127.0.0.1').split(' ')]
 ALLOWED_HOSTS = HOSTS_FROM_ENV
