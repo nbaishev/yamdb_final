@@ -9,7 +9,7 @@ services:
       - ./.env
 
   web:
-    image: nbaishev/api_yamdb:latest
+    image: dazdik/infra:v1
     restart: always
     volumes:
       - static_value:/app/static/
