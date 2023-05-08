@@ -9,7 +9,7 @@ services:
       - ./.env
 
   web:
-    image: dazdik/infra:v1
+    image: dazdik/infra:latest
     restart: always
     volumes:
       - static_value:/app/static/
